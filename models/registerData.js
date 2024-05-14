@@ -39,6 +39,9 @@ const { db } = require('../db/connection');
             temperatura:{
                 type: DataTypes.DOUBLE
             },
+            tempExterna:{
+                type: DataTypes.DOUBLE
+            },
             humedad:{
                 type: DataTypes.DOUBLE
             },
