@@ -3,13 +3,27 @@ const {DataRegister} = require('../models/registerData');
 
 
 const registerParams = async(req, res = response) => {
+    
+    var datetime = new Date();
+    console.log(datetime.toISOString().slice(0,10));
 
-    // const {hora, fecha, metano, dioxido_carbono, temperatura, humedad, ph} = req.body;
+    var time = datetime.getHours() + ":" +
+    datetime.getMinutes() + ":" +
+    datetime.getSeconds();
 
-    dataRegist = new DataRegister(req.body);
+    console.log(time);
+    
+
     console.log(req.body)
+    dataRegist = new DataRegister({
+        ...req.body,
+        hora: time, 
+        fecha: datetime.toISOString().slice(0,10), 
+        createdAt:datetime.toISOString().slice(0,10)
+    });
 
     await dataRegist.save();
+
 
 
     res.status(201).json({

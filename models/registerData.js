@@ -1,21 +1,6 @@
 const {Sequelize, DataTypes, Model} = require('sequelize');
 const { db } = require('../db/connection');
-// const sequelize = new Sequelize('sqlite::memory:');
-// const sequelize = new Sequelize();
 
-// const DataSchema = sequelize.define(
-//     // 'register', 
-//     {
-    
-// })
-
-// module.exports = Sequelize.models
-// module.exports = { DataSchema }
-// module.exports =new Model('register', DataSchema)
-// module.exports = DataSchema;
-// module.exports = new Model('register', DataSchema);
-
-// module.exports = (sequelize, DataTypes) => {
     const DataRegister = db.define(
         'registers',
         {
