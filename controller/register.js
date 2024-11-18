@@ -1,7 +1,6 @@
 const {response} = require('express');
 const {DataRegister} = require('../models/registerData');
 
-
 const registerParams = async(req, res = response) => {
     
     var datetime = new Date();
@@ -10,9 +9,7 @@ const registerParams = async(req, res = response) => {
     var time = datetime.getHours() + ":" +
     datetime.getMinutes() + ":" +
     datetime.getSeconds();
-
-    console.log(time);
-    
+    console.log(time);   
 
     console.log(req.body)
     dataRegist = new DataRegister({
@@ -24,8 +21,6 @@ const registerParams = async(req, res = response) => {
 
     await dataRegist.save();
 
-
-
     res.status(201).json({
        ok: true,
        msg: 'registro',
@@ -33,9 +28,8 @@ const registerParams = async(req, res = response) => {
     });
 
 }
-
 module.exports = { 
-    registerParams
+    registerParams,
  }
 
 

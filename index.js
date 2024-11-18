@@ -1,12 +1,12 @@
 const express = require('express');
 require('dotenv').config();
 const {db} = require('./db/connection');
+const cors = require('cors');
 
 // Crear un servidor de Express
 const app = express();
 
 //Base de datos
-// dbConnection();
 async function dbConnection(){
     try {
 
@@ -19,26 +19,16 @@ async function dbConnection(){
     }
 }
 
+app.use(cors());
 
 //Directorio publico
 app.use(express.static('public'));
-
-
-
-
-
 //Lectura y parseo del body
 app.use(express.json());
 
 // Rutas
 app.use('/api/register', require('./routes/register'));
-// app.get('/', (req, res) => {
-   
-//     res.json({
-//         "ok": true,
-//     });
-// });
-
+app.use('/api/getRegister', require('./routes/getRegister'));
 
 app.listen(3000, () => {
     console.log(`Servidor en puerto 3000 ${3000}`);
